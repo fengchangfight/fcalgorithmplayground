@@ -32,14 +32,14 @@ final_result = []
 
 
 
-
-i1 = Interval(22,64)
-i2 = Interval(32,86)
-i3 = Interval(49,86)
-i4 = Interval(54,63)
-i5 = Interval(62,88)
-
-itlist = [i1, i2, i3, i4, i5]
+#
+# i1 = Interval(22,64)
+# i2 = Interval(32,86)
+# i3 = Interval(49,86)
+# i4 = Interval(54,63)
+# i5 = Interval(62,88)
+#
+# itlist = [i1, i2, i3, i4, i5]
 
 
 # sort interval by start
