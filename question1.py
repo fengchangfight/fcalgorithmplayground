@@ -1,7 +1,9 @@
 from utils import randIntegerArrayGenerator
+#############THE QUESTION IS###########
 # input：an array of integer, let's call it A:
 # constraint： A[i]<A[j], i<j
 # optimization goal： maximize(j-1)
+#######################################gs
 
 # intuition 1: if not using any existing knowledge of the array, we have to compare each 2 elements of the array,
 # which is obviously O(n2).
