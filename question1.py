@@ -1,3 +1,4 @@
+from utils import randIntegerArrayGenerator
 # input：an array of integer, let's call it A:
 # constraint： A[i]<A[j], i<j
 # optimization goal： maximize(j-1)
@@ -19,4 +20,58 @@
 # intuition 4: can we pick out the subset of the possible left-end candidates and right-end candidates? and then do something?
 
 # intuition 5: how many such increment list do we need to pick? every increasing interval? or just one is enough?
+
+# intuition 6: think in a subsequence way when dealing with array(not substring)
+
+# intuition 7 think about fixing the left side(one side), and move from the other side，
+# no move back and forth, think about why this is correct and prove it
+
+# intuition 8, when we want to exclude a choice, we can prove it's correct by providing aother obviously better choice
+
+# intuition 9, think about equal case, which is very very very important
+
+input = randIntegerArrayGenerator(10, 1,30)
+
+def findDecreasingSubSequenceIndex(input_array):
+    result = []
+    for i in range(len(input_array)):
+        if(len(result)<1):
+            result.append(i)
+        elif(input_array[i]<input_array[result[-1]]):
+            result.append(i)
+    return result
+
+
+#sample input
+#input = [26, 3, 24, 16, 10, 14, 22, 1, 19, 1]
+print(input)
+
+
+decIndex = findDecreasingSubSequenceIndex(input)
+print(decIndex)
+j = len(input)-1
+iIndex = len(decIndex)-1
+i = decIndex[iIndex]
+
+maxDistance = j-i
+
+while(True):
+    iIndex-=1
+    if(iIndex<0):
+        break
+    i = decIndex[iIndex]
+    if(input[i]<=input[j]):
+        newDistance = j-i
+        if(newDistance>maxDistance):
+            maxDistance = newDistance
+        continue
+    else:
+        while(input[i]>input[j]):
+            j-=1
+        newDistance = j-i
+        if(newDistance>maxDistance):
+            maxDistance = newDistance
+
+print(maxDistance)
+
 

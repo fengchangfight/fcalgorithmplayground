@@ -12,5 +12,3 @@ def randIntegerArrayGenerator(size, start, end):
         result.append(randIntGenerator(start, end))
     return result
 
-
-print(randIntegerArrayGenerator(10, 1,30))
