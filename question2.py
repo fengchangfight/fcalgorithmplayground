@@ -82,38 +82,38 @@ print("===number of intersections:=====")
 print(len(final_result))
 
 
-print("=========sequence after sorting======")
+#print("=========sequence after sorting======")
 
 # ============ method 2:
-class SortableData(object):
-    def __init__(self, val, type, index):
-        self.val = val
-        self.type=type
-        self.index=index
-
-    def printPretty(self):
-        print(str(self.val)+","+self.type+str(self.index))
-
-sortableList = []
-for i in range(len(itlist)):
-    el = itlist[i]
-    sortableList.append(SortableData(el.start, 's', i))
-    sortableList.append(SortableData(el.end, 'e', i))
-
-
-sortableList.sort(key=lambda x: x.val, reverse=False)
-
-cnt = 0;
-maxCount = 0
-for item in sortableList:
-    if(item.type=='s'):
-        cnt+=1
-    else:
-        cnt-=1
-    if(cnt>maxCount):
-        maxCount = cnt
-    item.printPretty()
-
-
-print("=========")
-print(maxCount)
+# class SortableData(object):
+#     def __init__(self, val, type, index):
+#         self.val = val
+#         self.type=type
+#         self.index=index
+#
+#     def printPretty(self):
+#         print(str(self.val)+","+self.type+str(self.index))
+#
+# sortableList = []
+# for i in range(len(itlist)):
+#     el = itlist[i]
+#     sortableList.append(SortableData(el.start, 's', i))
+#     sortableList.append(SortableData(el.end, 'e', i))
+#
+#
+# sortableList.sort(key=lambda x: x.val, reverse=False)
+#
+# cnt = 0;
+# maxCount = 1
+# for item in sortableList:
+#     if(item.type=='s'):
+#         cnt+=1
+#     else:
+#         cnt-=1
+#     if(cnt>maxCount):
+#         maxCount = cnt
+#     item.printPretty()
+#
+#
+# print("=========")
+# print(maxCount)
