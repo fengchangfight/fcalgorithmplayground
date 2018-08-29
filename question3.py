@@ -48,7 +48,6 @@ def pairArray(input_array, k):
 
 
 # sample input:
-input = [24, 23, 21, 8, 19, 25, 18, 1, 21, 14]
 for i in range(100):
     input = randIntegerArrayGenerator(10, 1, 30)
     print(input)
