@@ -14,7 +14,10 @@ from utils import randIntegerArrayGenerator
 # if we can turn our problem into that form, then problem is solved
 # intuition 6: use math!!! if a+b can be divided by k, it could be that both a and b can be divided by k, or, the remainder of a plus the remainder
 # of b equals k(Can you prove it?), using this math, it's easy to to the problem turning, we turn the original array into an remainder array
-
+# intuition 7: still one problem, we still have to do the operation that whether an element exists in an array, which is not a constant time operation,
+# which is not good
+# intuition 8: if we can do the check in another way, say we know k =5, if we know there are 3 remainders 2, there has to be 3 remainders 3,
+# otherwise it's not a match, doing a statistic on a array is O(n) and get a dictionary's value by key is constant, so we get O(n) time, which is the best
 class Pair(object):
     def __init__(self, v1, v2):
         self.val1 = v1;
@@ -32,18 +35,25 @@ class Pair(object):
 def pairArray(input_array, k):
     print("divided by "+str(k))
     remainder = [m%k for m in input_array]
-    # now the problem turns into find pairs in remainder array that sum up to k
-    while(len(remainder)>0):
-        val = remainder[0]
-        remainder.remove(remainder[0])
-        if(val!=0):
-            if ((k - val) not in remainder):
-                return False
-            remainder.remove(k - val)
+
+    #di is a dictionary, key is remainder value, key is its occurance count in the array
+    di={}
+
+    # doing the statistics
+    for r in remainder:
+        if r not in di:
+            di[r]=1
         else:
-            if(0 not in remainder):
+            di[r]+=1
+
+    for key in di.keys():
+        if key==0:
+            if(di[key]%2!=0):
                 return False
-            remainder.remove(0)
+        elif(k%2==0 and int(k/2) in di  and  di[int(k/2)]%2!=0):
+            return False
+        elif(k-key not in di or di[key]!=di[k-key]):
+            return False
     return True
 
 
