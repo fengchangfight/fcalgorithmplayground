@@ -18,29 +18,12 @@ print("...before sorting...")
 for item in itlist:
     item.printInterval()
 
-
-
 # do real stuff
 # this is a sorted list of the current group of right end(group means the sections in the group are connected by way of intersection)
 
 union_end=[]
 
 final_result = []
-
-# sample input:
-
-
-
-
-#
-# i1 = Interval(22,64)
-# i2 = Interval(32,86)
-# i3 = Interval(49,86)
-# i4 = Interval(54,63)
-# i5 = Interval(62,88)
-#
-# itlist = [i1, i2, i3, i4, i5]
-
 
 # sort interval by start
 itlist.sort(key=lambda x: x.start, reverse=False)
@@ -94,3 +77,43 @@ for item in itlist:
 print("intersections:=====")
 for item in final_result:
     item.printInterval()
+
+print("===number of intersections:=====")
+print(len(final_result))
+
+
+print("=========sequence after sorting======")
+
+# ============ method 2:
+class SortableData(object):
+    def __init__(self, val, type, index):
+        self.val = val
+        self.type=type
+        self.index=index
+
+    def printPretty(self):
+        print(str(self.val)+","+self.type+str(self.index))
+
+sortableList = []
+for i in range(len(itlist)):
+    el = itlist[i]
+    sortableList.append(SortableData(el.start, 's', i))
+    sortableList.append(SortableData(el.end, 'e', i))
+
+
+sortableList.sort(key=lambda x: x.val, reverse=False)
+
+cnt = 0;
+maxCount = 0
+for item in sortableList:
+    if(item.type=='s'):
+        cnt+=1
+    else:
+        cnt-=1
+    if(cnt>maxCount):
+        maxCount = cnt
+    item.printPretty()
+
+
+print("=========")
+print(maxCount)
