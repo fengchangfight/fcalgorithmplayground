@@ -8,7 +8,7 @@ from utils import partition
 # intuition 1: if we can sort the input array in descending order, than we can just do sum from left to right, until the first value bigger than k
 # if we follow intuition 1, then the time complexity is O(nlogn), because it's limited by the best sorting algorithm
 # intuition 2: if we want better time complexity, we need to avoid a full sorting, is it possible?
-# if we are familiar with the top K problem, we are able to get topK within O(n) problem, because a full sort is not necessary, we only need a partial sort
+# if we are familiar with the top K problem, we are able to get topK within O(n) time, because a full sort is not necessary, we only need a partial sort
 # so we can borrow this idea from top K problem, use a quicksort partition to do it
 
 
